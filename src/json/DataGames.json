@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Dasar Matematika",
+        "color": "#3b82f6",
+        "textColor": "text-blue-100",
+        "description": "Latih kemampuan matematika dasar seperti penjumlahan, pengurangan, perkalian, dan pembagian dengan waktu yang terbatas.",
+        "background_img": "illustration-basic-math.png",
+        "link": "dasar-matematika"
+    },
+    {
+        "title": "Memory Card",
+        "color": "#a855f7",
+        "textColor": "text-purple-100",
+        "description": "Cocokkan kartu dengan angka atau operasi matematika yang sama untuk mengasah daya ingat dan fokus.",
+        "background_img": "illustration-memory-card.png",
+        "link": "memory-card"
+    },
+    {
+        "title": "Shape Puzzle",
+        "color": "#22c55e",
+        "textColor": "text-green-100",
+        "description": "Pecahkan teka-teki bentuk geometri dengan menghitung nilai-nilai berdasarkan pola matematika.",
+        "background_img": "illustration-shape-puzzle.png",
+        "link": "shape-puzzle"
+    },
+    {
+        "title": "Math Racing",
+        "color": "#f59e0b",
+        "textColor": "text-yellow-100",
+        "description": "Ikuti balapan seru dengan menjawab soal matematika secara cepat untuk mencapai garis finis terlebih dahulu.",
+        "background_img": "illustration-math-racing.png",
+        "link": "math-racing"
+    },
+    {
+        "title": "Sorting Angka",
+        "color": "#ef4444",
+        "textColor": "text-red-100",
+        "description": "Atur angka dari terkecil ke terbesar (atau sebaliknya) dalam waktu tertentu untuk menguji kecepatan dan logika.",
+        "background_img": "illustration-sorting-angka.png",
+        "link": "sorting-angka"
+    },
+    {
+        "title": "Menyamakan Pecahan",
+        "color": "#10b981",
+        "textColor": "text-green-100",
+        "description": "Cocokkan pecahan dengan desimal atau persamaan yang setara untuk memahami konsep pecahan lebih baik.",
+        "background_img": "illustration-fraction-match.png",
+        "link": "menyamakan-pecahan"
+    }
+]
