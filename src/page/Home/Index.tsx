@@ -12,9 +12,7 @@ export default function Index() {
         <>
             <SectionOne />
 
-            {<SectionTwo />}
-
-
+            <SectionTwo />
         </>
     )
 }

@@ -5,7 +5,8 @@
         "textColor": "text-blue-100",
         "description": "Latih kemampuan matematika dasar seperti penjumlahan, pengurangan, perkalian, dan pembagian dengan waktu yang terbatas.",
         "background_img": "illustration-basic-math.png",
-        "link": "dasar-matematika"
+        "link": "dasar-matematika",
+        "difficulty": "Easy"
     },
     {
         "title": "Memory Card",
@@ -13,7 +14,8 @@
         "textColor": "text-purple-100",
         "description": "Cocokkan kartu dengan angka atau operasi matematika yang sama untuk mengasah daya ingat dan fokus.",
         "background_img": "illustration-memory-card.png",
-        "link": "memory-card"
+        "link": "memory-card",
+        "difficulty": "Easy"
     },
     {
         "title": "Shape Puzzle",
@@ -21,7 +23,8 @@
         "textColor": "text-green-100",
         "description": "Pecahkan teka-teki bentuk geometri dengan menghitung nilai-nilai berdasarkan pola matematika.",
         "background_img": "illustration-shape-puzzle.png",
-        "link": "shape-puzzle"
+        "link": "shape-puzzle",
+        "difficulty": "Easy"
     },
     {
         "title": "Math Racing",
@@ -29,7 +32,8 @@
         "textColor": "text-yellow-100",
         "description": "Ikuti balapan seru dengan menjawab soal matematika secara cepat untuk mencapai garis finis terlebih dahulu.",
         "background_img": "illustration-math-racing.png",
-        "link": "math-racing"
+        "link": "math-racing",
+        "difficulty": "Easy"
     },
     {
         "title": "Sorting Angka",
@@ -37,7 +41,8 @@
         "textColor": "text-red-100",
         "description": "Atur angka dari terkecil ke terbesar (atau sebaliknya) dalam waktu tertentu untuk menguji kecepatan dan logika.",
         "background_img": "illustration-sorting-angka.png",
-        "link": "sorting-angka"
+        "link": "sorting-angka",
+        "difficulty": "Easy"
     },
     {
         "title": "Menyamakan Pecahan",
@@ -45,6 +50,7 @@
         "textColor": "text-green-100",
         "description": "Cocokkan pecahan dengan desimal atau persamaan yang setara untuk memahami konsep pecahan lebih baik.",
         "background_img": "illustration-fraction-match.png",
-        "link": "menyamakan-pecahan"
+        "link": "menyamakan-pecahan",
+        "difficulty": "Easy"
     }
 ]
