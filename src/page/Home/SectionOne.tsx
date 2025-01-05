@@ -74,10 +74,10 @@ export default function SectionOne() {
                 </motion.div>
 
                 <motion.img
-                    className="rounded-xl max-w-md w-full shadow-2xl"
+                    className="rounded-xl max-w-md"
                     src="/HeroImage.png"
                     alt="Game Preview"
-                    initial={{ x: 100, opacity: 0, rotate: -5 }}
+                    initial={{ x: 100, opacity: 0, rotate: 5, rotateY: 180 }}
                     animate={{ x: 0, opacity: 1, rotate: 0 }}
                     transition={{ duration: 0.8 }}
                     whileHover={{ scale: 1.05, rotate: 5 }}
