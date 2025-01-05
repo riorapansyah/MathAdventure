@@ -89,6 +89,7 @@ const MathFractionMatch = () => {
             setScore(score + level * 10);
             setMatches(matches + 1);
             setFeedback('Benar!');
+            generatePuzzle();
 
             if (matches + 1 === fractions.length) {
                 if (score + level * 10 >= level * 50) {

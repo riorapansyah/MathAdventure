@@ -17,6 +17,8 @@ const MathMemoryGame = () => {
     const [solved, setSolved] = useState<number[]>([]);
     const [moves, setMoves] = useState<number>(0);
     const [gameOver, setGameOver] = useState<boolean>(false);
+    const [initialReveal, setInitialReveal] = useState<boolean>(true);
+    const [timeLeft, setTimeLeft] = useState<number>(7);
 
     const generateCards = (): CardItem[] => {
         const numbers = Array.from({ length: 8 }, (_, i) => i + 1);
@@ -26,7 +28,7 @@ const MathMemoryGame = () => {
             value: num,
             display: generateEquation(num),
         }));
-        const answers: any = numbers.map((num) => ({
+        const answers = numbers.map((num) => ({
             id: `ans-${num}`,
             type: 'answer',
             value: num,
@@ -75,7 +77,7 @@ const MathMemoryGame = () => {
     };
 
     const handleClick = (index: number) => {
-        if (flipped.length === 2 || flipped.includes(index) || solved.includes(index)) return;
+        if (initialReveal || flipped.length === 2 || flipped.includes(index) || solved.includes(index)) return;
 
         const newFlipped = [...flipped, index];
         setFlipped(newFlipped);
@@ -87,17 +89,20 @@ const MathMemoryGame = () => {
                 setSolved((prev) => [...prev, first, second]);
                 setFlipped([]);
             } else {
-                setTimeout(() => setFlipped([]), 1000);
+                setTimeout(() => setFlipped([]), 800);
             }
         }
     };
 
     const startNewGame = () => {
-        setCards(generateCards());
-        setFlipped([]);
+        const newCards = generateCards();
+        setCards(newCards);
+        setFlipped(newCards.map((_, index) => index));
         setSolved([]);
         setMoves(0);
         setGameOver(false);
+        setInitialReveal(true);
+        setTimeLeft(7);
     };
 
     useEffect(() => {
@@ -105,18 +110,36 @@ const MathMemoryGame = () => {
     }, []);
 
     useEffect(() => {
+        if (initialReveal) {
+            const timer = setInterval(() => {
+                setTimeLeft((prevTime) => {
+                    if (prevTime <= 1) {
+                        clearInterval(timer);
+                        setInitialReveal(false);
+                        setFlipped([]);
+                        return 0;
+                    }
+                    return prevTime - 1;
+                });
+            }, 1000);
+
+            return () => clearInterval(timer);
+        }
+    }, [initialReveal]);
+
+    useEffect(() => {
         if (solved.length === cards.length && cards.length > 0) {
             setGameOver(true);
             confetti({
                 particleCount: 100,
                 spread: 70,
-                origin: { y: 0.6 }
+                origin: { y: 0.6 },
             });
         }
     }, [solved, cards]);
 
     return (
-        <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 to-purple-100 p-4'>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 to-purple-100 p-4">
             <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -128,16 +151,16 @@ const MathMemoryGame = () => {
                         <motion.h2
                             className="text-3xl font-bold text-indigo-600 mb-2"
                             animate={{ scale: [1, 1.1, 1] }}
-                            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                            transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
                         >
                             Math Memory Game
                         </motion.h2>
                         <motion.p
                             className="text-lg text-purple-600 font-semibold"
                             animate={{ y: [0, -5, 0] }}
-                            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                            transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
                         >
-                            Gerakan: {moves}
+                            {initialReveal ? `Hafalkan kartu-kartu itu! ${timeLeft}  detik tersisa!` : `Gerakan: ${moves}`}
                         </motion.p>
                     </div>
 
@@ -172,28 +195,26 @@ const MathMemoryGame = () => {
                                     <motion.div
                                         key={card.id}
                                         onClick={() => handleClick(index)}
-                                        className={`aspect-square flex items-center justify-center text-lg font-bold rounded-lg cursor-pointer shadow-md ${flipped.includes(index) || solved.includes(index)
-                                            ? 'bg-gradient-to-br from-indigo-500 to-purple-500 text-white'
-                                            : 'bg-gray-100 text-indigo-600 hover:bg-gray-200'
-                                            }`}
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        animate={
-                                            flipped.includes(index) || solved.includes(index)
-                                                ? { rotateY: 180 }
-                                                : { rotateY: 0 }
-                                        }
-                                        transition={{ duration: 0.3 }}
+                                        className="aspect-square flex items-center justify-center text-lg font-bold rounded-lg cursor-pointer shadow-md"
+                                        style={{
+                                            backgroundColor:
+                                                flipped.includes(index) || solved.includes(index)
+                                                    ? '#5a67d8'
+                                                    : '#f7fafc',
+                                            color:
+                                                flipped.includes(index) || solved.includes(index)
+                                                    ? 'white'
+                                                    : '#4c51bf',
+                                            transform: flipped.includes(index) || solved.includes(index)
+                                                ? 'rotateY(180deg)'
+                                                : 'rotateY(0deg)',
+                                            transition: 'transform 0.3s ease',
+                                        }}
                                     >
-                                        <div className="absolute w-full h-full backface-hidden flex items-center justify-center">
-                                            {flipped.includes(index) || solved.includes(index) ? '' : '?'}
-                                        </div>
-                                        <div
-                                            className="absolute w-full h-full backface-hidden flex items-center justify-center"
-                                            style={{ transform: 'rotateY(180deg)' }}
-                                        >
-                                            {card.display}
-                                        </div>
+                                        {flipped.includes(index) || solved.includes(index) || initialReveal
+                                            ? <p className='rotate-custom'>{card.display}</p>
+                                            : <p className=''>?</p>
+                                        }
                                     </motion.div>
                                 ))}
                             </motion.div>

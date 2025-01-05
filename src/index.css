@@ -71,7 +71,38 @@
   scroll-behavior: smooth;
 }
 
-@layer utilities {
+.rotate-custom {
+  transform: rotateY(180deg);
+}
+
+.glitch {
+  font-family: cursive;
+  position: relative;
+  color: white;
+  text-shadow: 2px 2px red, -2px -2px blue;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 2px red, -2px -2px blue;
+    transform: rotateY(180deg) translate(1px, 1px);
+  }
+  33% {
+    text-shadow: -2px -2px red, 2px 2px blue;
+    transform: rotateY(-180deg) translate(-2px, -2px);
+  }
+  66% {
+    text-shadow: 2px -2px red, -2px 2px blue;
+    transform: rotateY(180deg) translate(2px, -1px);
+  }
+  100% {
+    text-shadow: -2px 2px red, 2px -2px blue;
+    transform: rotateY(-190deg) translate(-1px, 2px);
+  }
+}
+
+/* @layer utilities {
   .perspective {
     perspective: 1000px;
   }
@@ -87,4 +118,4 @@
   .rotate-y-180 {
     transform: rotateY(180deg);
   }
-}
+} */
