@@ -6,22 +6,22 @@ const teamMembers = [
     {
         name: "Rio Rapansyah",
         description: "",
-        avatar: "/public/alfi.jpeg"
+        avatar: "/illustration-12.png"
     },
     {
         name: "Dimas Khansa",
         description: "",
-        avatar: "/public/alfi.jpeg"
+        avatar: "/dimas.jpeg"
     },
     {
         name: "Agil Sammy Aldo",
         description: "",
-        avatar: "/public/agil.jpeg"
+        avatar: "/agil.jpeg"
     },
     {
         name: "DM Alfi Syahri",
         description: "",
-        avatar: "/public/alfi.jpeg"
+        avatar: "/alfi.jpeg"
     }
 ];
 
